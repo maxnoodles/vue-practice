@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello world</title>
+    <script src='../vue.js'></script>
+</head>
+<body>
+    <div id='app'>
+        <div v-for='(item, index) of list' :key='item.id'>
+            {{item.uname}} --- {{index}} --- {{item.id}}
+        </div>
+        <br><br>
+        <template v-for='(value, key, index) of userInfo' >
+            <div>
+                {{value}} --- {{key}} --- {{index}}
+            </div>
+            <span>
+                {{value}}
+            </span>
+        </template>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            // push, pip, shift, unshift, splice, sort, reverse
+            list: [
+                {
+                    id:'1',
+                    uname:'a'
+                },
+                {
+                    id:'2',
+                    uname:'b'
+                },
+                {
+                    id:'3',
+                    uname:'c'
+                },
+            ],
+            userInfo: {
+                name: 'noodles',
+                age: 18,
+                gender: 'male',
+            }
+        }
+    })
+</script>
+</html>

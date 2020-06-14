@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src='../vue.js'></script>
+</head>
+<body>
+    <div id='app'>
+        <div v-if="show">this is if</div>
+        <div v-show="show">this is show</div>
+        
+        <div v-if='name === "a"'>this is a</div>
+        <div v-else-if='name === "b"'>this is b</div>
+        <div v-else>this is other</div>
+
+        <div v-if='username === "email"'>
+            邮箱 <input :key='email'/>
+        </div>
+        <div v-else>
+            用户名 <input :key='name'/>
+        </div>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            show: false,
+            name: 'a',
+            username: 'email'
+        }
+    })
+</script>
+</html>

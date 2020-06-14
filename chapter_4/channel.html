@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello world</title>
+    <script src='../vue.js'></script>
+</head>
+<body>
+    <div id='app'>
+        <child content='max'></child>
+        <child content='noodles'></child>
+    </div>
+</body>
+
+<script>
+    Vue.prototype.bus = new Vue()
+    Vue.component('child', {
+        props: {
+            content: String
+        },
+        data: function(){
+            return {
+                SelfContent: this.content
+            }
+        },
+        template: '<div @click="handleClick">{{SelfContent}}</div>',
+        methods: {
+            handleClick: function(){
+                this.bus.$emit('change', this.SelfContent)
+            }
+        },
+        mounted: function() {
+            var this_ = this
+            this.bus.$on('change', function(msg){
+                this_.SelfContent = msg
+            })
+        }
+    })
+
+    var app = new Vue({
+        el: "#app",
+    })
+</script>
+</html>

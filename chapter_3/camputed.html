@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src='../vue.js'></script>
+</head>
+<body>
+    <div id='app'>
+        <div>camputed {{fullName1}}</div>
+        <div>method {{fullName2()}}</div>
+        <div>watch {{fullName}}</div>
+
+    </div>
+</body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                fname: 'max',
+                lname: 'noodels',
+                fullName: ''
+            },
+            methods: {
+              fullName2: function() {
+                return `${this.fname} ${this.lname}`
+              }  
+            },
+            watch: {
+                fname: function() {
+                    this.fullName = `${this.fname} ${this.lname}`
+                },
+                lname: function() {
+                    this.fullName = `${this.fname} ${this.lname}`
+                },
+            },
+            // 计算属性，有缓存
+            computed: {
+                fullName1: function(){
+                    return `${this.fname} ${this.lname}`
+                }
+            }
+
+        })
+
+    </script>
+
+</html>
